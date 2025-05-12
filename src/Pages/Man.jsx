@@ -62,34 +62,43 @@ const Man = () => {
     const newMessages = [...chatMessages, { role: "user", content: chatInput }];
     setChatMessages(newMessages);
 
-    try {
-      const response = await axios.post(
-        `https://api.gemini.ai/v1/chat/completions`,
-        {
-          input: chatInput,
-          context: `You are CinAi, a movie assistant AI. The user will give you a movie description or vague details. Try to guess the most likely movie name they are referring to.`,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${GEMINI_AI_API_KEY}`,
-          },
-        }
-      );
-
-      setChatMessages([
-        ...newMessages,
-        { role: "ai", content: response.data.completion },
-      ]);
-    } catch (error) {
-      setChatMessages([
-        ...newMessages,
-        { role: "ai", content: "Oops! Something went wrong with CinAi." },
-      ]);
+try {
+  const response = await axios.post(
+    `https://api.gemini.ai/v1/chat/completions`,  // Correct endpoint for Gemini 1.5 Flash
+    {
+      input: chatInput, // The user input, like "a movie where a man turns into an ant"
+      context: `You are CinAi, a movie assistant AI. The user will give you a movie description or vague details. Try to guess the most likely movie name they are referring to.`,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${GEMINI_AI_API_KEY}`,  // Your API Key for authentication
+        'Content-Type': 'application/json', // Ensure the request content type is JSON
+      },
     }
+  );
 
-    setChatInput("");
+  console.log("Response data:", response.data);
+
+  // Extract the response message (completion) from the Gemini API response
+  const completion = response.data.completion || "No response from the AI";  // Handle empty or error responses
+
+  // Update the chat messages with the AI's response
+  setChatMessages([
+    ...newMessages,
+    { role: "ai", content: completion },
+  ]);
+} catch (error) {
+  console.error("Error:", error.response ? error.response.data : error.message);
+
+  // If an error occurs, notify the user gracefully
+  setChatMessages([
+    ...newMessages,
+    { role: "ai", content: "Oops! Something went wrong with CinAi." },
+  ]);
+}
+
+setChatInput("");  // Clear the chat input for the next message
   };
-
   const handleModalClose = () => {
     setIsModalOpen(false);
     setChatMessages([
