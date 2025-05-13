@@ -4,8 +4,7 @@ import './index.css';
 function App() {
   return (
     <>
-    <Home />
-    <Man />
+    <Man/>
       </>
   )
 }

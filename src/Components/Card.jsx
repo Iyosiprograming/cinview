@@ -1,63 +1,61 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 
-const Card = ({ title, imageUrl, overview, adult, releaseDate, rating, trailerUrl }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+const Card = ({ movie }) => {
+  const [isClicked, setIsClicked] = useState(false);
 
-  const openModal = () => {
-    setIsModalOpen(true);
+  const handleClick = () => {
+    setIsClicked(true); 
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const handleClose = (e) => {
+    e.stopPropagation(); 
+    setIsClicked(false); 
   };
-
-  const ageRating = adult ? "13+" : "18+";
-
 
   return (
     <>
       <div
-        className="relative overflow-hidden rounded-lg shadow-lg cursor-pointer"
-        onClick={openModal}
+        className="bg-gray-800 rounded-lg shadow-lg overflow-hidden w-full max-w-sm m-auto cursor-pointer hover:scale-105 transition-transform duration-300"
+        onClick={handleClick}
       >
-        <img src={imageUrl} alt={title} className="w-full h-auto object-cover" />
-        <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 text-white text-center p-2">
-          <h2 className="text-lg font-semibold">{title}</h2>
+        <div className="w-full bg-black">
+          <img
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            alt={movie.title}
+            className="w-full h-auto object-contain"
+          />
+        </div>
+        <div className="p-1">
+          <h2 className="text-lg text-white mb-1 text-center">{movie.title}</h2>
         </div>
       </div>
 
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
-          <div className="relative w-full h-full backdrop-blur-sm">
+      {isClicked && (
+        <div className="fixed inset-0 z-50 flex justify-center items-center">
+          <div className="absolute inset-0 bg-gray-700 bg-opacity-90 backdrop-blur-sm"></div>
+
+          <div className="relative  rounded-lg p-6 max-w-4xl w-full flex flex-col md:flex-row gap-6 text-white">
             <button
-              className="absolute top-4 right-4 text-white text-3xl"
-              onClick={closeModal}
+              onClick={handleClose}
+              className="absolute top-4 right-4 text-white text-3xl hover:text-red-500"
             >
               &times;
             </button>
 
-            <div className="flex justify-center items-center w-full h-full px-8 py-4">
-              <div className="w-1/3">
-                <img
-                  src={imageUrl}
-                  alt={title}
-                  className="w-full h-auto object-contain border-4 border-white rounded-lg"
-                />
-              </div>
+            <div className="w-full md:w-1/3">
+              <img
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                alt={movie.title}
+                className="rounded-lg w-full h-auto object-contain"
+              />
+            </div>
 
-              <div className="text-white w-2/3 text-center bg-opacity-70 rounded-lg p-8">
-                <h2 className="text-5xl font-bold mb-4">{title}</h2>
-                <p className="text-xl mb-4">{overview}</p>
-                <p className="text-lg mb-2">Adult: {ageRating}</p>
-                <p className="text-lg mb-2">Genre: Action</p>
-                <p className="text-lg mb-2">Release Date: {releaseDate}</p>
-                <p className="text-lg mb-4">Rating: {rating}</p>
-                <button
-                  className="bg-red-400 text-white py-2 px-6 rounded-lg hover:bg-red-500 transition duration-300"
-                  onClick={() => window.open(`https://www.youtube.com/watch?v=${trailerUrl}`, '_blank')}
-                >
-                  Watch Trailer
-                </button>
+            <div className="w-full md:w-2/3 space-y-4">
+              <h1 className="text-4xl font-bold">{movie.title}</h1>
+              <p className="text-white">{movie.overview || "No description available."}</p>
+              <div className="text-sm text-white">
+                <p><strong>Release Date:</strong> {movie.release_date}</p>
+                <p><strong>Rating:</strong> {movie.vote_average}</p>
               </div>
             </div>
           </div>
@@ -68,5 +66,3 @@ const Card = ({ title, imageUrl, overview, adult, releaseDate, rating, trailerUr
 };
 
 export default Card;
-
-
