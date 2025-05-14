@@ -4,7 +4,7 @@ import Card from "../Components/Card";
 const Man = () => {
   const [movies, setMovies] = useState([]);
   const [searchMovies, setSearchMovies] = useState("");
-
+ 
   const handleSearch = () => {
     if (searchMovies.trim() !== "") {
       const fetchMovies = async () => {
@@ -57,7 +57,7 @@ const Man = () => {
   };
 
   return (
-    <div className="bg-gray-900 h-screen h-full">
+    <div className="bg-gray-900  h-full">
       <nav className="flex justify-between items-center px-6 py-4 bg-black/40">
         <div>
           <h1 className="text-2xl font-bold text-white">
@@ -119,7 +119,7 @@ const Man = () => {
         />
         <button
           className="bg-gray-800 text-white border border-gray-600 rounded p-2"
-          onClick={handleSearch} // Call handleSearch when button is clicked
+          onClick={handleSearch} 
         >
           🔍
         </button>
