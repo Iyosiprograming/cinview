@@ -43,13 +43,17 @@ CINVIEW uses Google Gemini AI to understand user input (e.g., genres, mood, spec
 
 **Iyosiyas Simon**  
 Full-Stack Developer | Software Engineer | AI Enthusiast  
-[LinkedIn](https://linkedin.com/in/your-profile) *(Replace with your actual LinkedIn URL)*
+[LinkedIn]([https://linkedin.com/in/your-profile](https://www.linkedin.com/in/iyosiyas-simon-879a87337/)) 
 
 ---
 
 ### 📷 Screenshot
 
-> _(Insert a screenshot or GIF here if you want to visually showcase the UI)_
+![image](https://github.com/user-attachments/assets/111650da-f534-4d22-9626-d23ff8556d2b)
+![image](https://github.com/user-attachments/assets/b15f2c6d-5dfb-4c8b-aa39-8ca498096e75)
+![image](https://github.com/user-attachments/assets/2344674e-4454-4955-8bc9-eb717b0c1691)
+
+
 
 ---
 
@@ -62,7 +66,7 @@ Instead of searching endlessly, CINVIEW delivers intelligent, curated suggestion
 
 ### 📣 Connect With Me
 
-If you like this project, feel free to reach out on [LinkedIn](https://linkedin.com/in/your-profile) or share it!
+If you like this project, feel free to reach out on [LinkedIn]([https://linkedin.com/in/your-profile](https://www.linkedin.com/in/iyosiyas-simon-879a87337/)) or share it!
 
 ---
 
