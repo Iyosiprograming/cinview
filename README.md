@@ -75,7 +75,5 @@ If you like this project, feel free to reach out on [LinkedIn]([https://linkedin
 - Movie details and trailers integration
 - User login and saved lists
 - More advanced filters (mood, decade, language, etc.)
-- Deploy as Telegram bot for conversational experience
-
 ---
 
