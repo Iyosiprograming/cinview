@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Card from "../Components/Card";
+import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 const Man = () => {
   const [movies, setMovies] = useState([]);
   const [searchMovies, setSearchMovies] = useState("");
+  const navigate = useNavigate();
  
   const handleSearch = () => {
     if (searchMovies.trim() !== "") {
@@ -60,15 +63,14 @@ const Man = () => {
     <div className="bg-gray-900  h-full">
       <nav className="flex justify-between items-center px-6 py-4 bg-black/40">
         <div>
-          <h1 className="text-2xl font-bold text-white">
+          <h1 className="text-2xl font-bold text-white cursor-pointer" onClick={() => navigate("/")}>
             Cin<span className="text-orange-400">View</span>
           </h1>
         </div>
         <ul className="flex space-x-6 text-white">
           <li>
-            <a href="/" className="hover:underline">
-              CinAi
-            </a>
+                  <Link to="/Cinai">CIN AI</Link>
+
           </li>
           <li>
             <select

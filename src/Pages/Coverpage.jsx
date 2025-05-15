@@ -1,7 +1,11 @@
+import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-const Home = () => {
+import { useNavigate } from 'react-router-dom';
+const Coverpage = () => {
   const [backgroundImageUrl, setBackgroundImageUrl] = useState(null);
   const TMDB_API_KEY = import.meta.env.VITE_TMDB;
+
+  const navigate = useNavigate();
 
   useEffect(() => {
   const fetchMovies = async () => {
@@ -33,26 +37,22 @@ const Home = () => {
     >
       <nav className="flex justify-between items-center px-6 py-4 bg-black/40 ">
         <div>
-          <h1 className="text-2xl font-bold text-white">
+          <h1 className="text-2xl font-bold text-white cursor-pointer" onClick={() => navigate("/")}>
             Cin<span className="text-orange-400">View</span>
           </h1>
         </div>
 
         <ul className="flex space-x-6 text-white">
           <li>
-            <a href="/" className="hover:underline">
-              CinAi
-            </a>
+                <Link to="/cinai"> CIN AI</Link>
           </li>
           <li>
-            <a href="/movies" className="hover:underline">
-              Movies
-            </a>
+                <Link to="/Homepage">Movies</Link>
+
           </li>
           <li>
-            <a href="/tv" className="hover:underline">
-              TV Shows
-            </a>
+                <Link to="/Homepage">Tv shows </Link>
+
           </li>
         </ul>
       </nav>
@@ -66,7 +66,7 @@ const Home = () => {
       </div>
 
       <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2">
-        <button className="text-white bg-transparent border-2 border-white rounded-lg px-12 py-4 hover:bg-white hover:text-black transition duration-300 backdrop-blur-lg bg-opacity-30">
+        <button className="text-white bg-transparent border-2 border-white rounded-lg px-12 py-4 hover:bg-white hover:text-black transition duration-300 backdrop-blur-lg bg-opacity-30" onClick={() => navigate("/Homepage")}>
           Explore
         </button>
       </div>
@@ -74,4 +74,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Coverpage;
