@@ -15,7 +15,7 @@ CINVIEW uses Google Gemini AI to understand user input (e.g., genres, mood, spec
 
 ### 🚀 Live Demo
 
-**🔗 [cinview.vercel.app](cinview-3vc4.vercel.app)**  
+**🔗 [cinview.vercel.app](http://cinview-3vc4.vercel.app/)**  
 
 
 ---
@@ -75,5 +75,6 @@ If you like this project, feel free to reach out on [LinkedIn]([https://linkedin
 - User login and saved lists
 - More advanced filters (mood, decade, language, etc.)
 ---
+
 
 
